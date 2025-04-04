@@ -1,0 +1,6 @@
+<div id="tooblox" class="toolbox" *ngFor="let tool of tools">
+    <div class="header">Tools</div>
+    <div class="tool" (click)="addToolToCanvas(tool)">
+        {{tool.name}}
+    </div>
+</div>

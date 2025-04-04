@@ -1,0 +1,19 @@
+.toolbox {
+    height: 100%;
+    background-color: rgb(216, 215, 215);
+
+    .header {
+        font-size: large;
+        text-align: center;
+    }
+
+}
+
+.tool {
+    width: 98%;
+    height: 25px;
+    background-color: white;
+    border: 1px solid  black;
+    margin: 1px;
+    text-align: center;
+}
