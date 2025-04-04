@@ -1,6 +1,15 @@
-<div id="tooblox" class="toolbox" *ngFor="let tool of tools">
-    <div class="header">Tools</div>
-    <div class="tool" (click)="addToolToCanvas(tool)">
-        {{tool.name}}
+<div id="tooblox" class="toolbox">
+    <div class="header">Modules</div>
+    <div *ngFor="let module of modules">
+        <div class="tool" (click)="addModuleToCanvas(module)">
+            {{module.name}}
+        </div>
+    </div>
+
+    <div class="header" style="margin-top: 30px;">Tools</div>
+    <div *ngFor="let tool of tools">
+        <div class="tool" (click)="addToolToCanvas(tool)">
+            {{tool.name}}
+        </div>
     </div>
 </div>

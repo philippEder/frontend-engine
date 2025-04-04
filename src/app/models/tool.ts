@@ -1,10 +1,11 @@
-export class Tool  {
+
+
+export class Tool {
 
     name: String
-    onClick: () => void
 
-    constructor(name: String, onClick: () => void) {
-        this.name = name
-        this.onClick = onClick
-    } 
+    constructor(name: String) {
+        this.name = name;
+    }
+
 }

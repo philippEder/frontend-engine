@@ -34,6 +34,21 @@ export class Canvas {
       this.graph.addCell(rect);
   }
 
+  public addTool() {
+    const rect = new shapes.standard.Rectangle({
+        position: { x: 100, y: 100 },
+        size: { width: 50, height: 50 },
+        attrs: {
+            body: {
+                fill: "yellow"
+            }
+        }
+      });
+    
+      rect.rotate(45)
+      this.graph.addCell(rect);
+  }
+
   private createPager() {
     this.paper = new dia.Paper({
         el: document.getElementById('canvas'),
