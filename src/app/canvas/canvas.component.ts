@@ -17,10 +17,10 @@ export class Canvas {
   public ngOnInit(): void {
     this.graph = new dia.Graph({}, { cellNamespace: shapes });
     this.createPager()
-    this.addModule("test")
+    this.createExampleWorkflow()
   }
 
-  public addModule(name: String) {
+  public addModule(name: String): dia.Element {
     const rect = new shapes.standard.Rectangle({
         position: { x: 100, y: 100 },
         size: { width: 100, height: 50 },
@@ -32,9 +32,11 @@ export class Canvas {
       });
     
       this.graph.addCell(rect);
+
+      return rect
   }
 
-  public addTool() {
+  public addTool(): dia.Element {
     const rect = new shapes.standard.Rectangle({
         position: { x: 100, y: 100 },
         size: { width: 50, height: 50 },
@@ -47,6 +49,8 @@ export class Canvas {
     
       rect.rotate(45)
       this.graph.addCell(rect);
+
+      return rect
   }
 
   private createPager() {
@@ -63,10 +67,33 @@ export class Canvas {
     });
   }
 
+  private addLink(source: dia.Element, target: dia.Element) {
+    var link = new shapes.standard.Link();
+    link.source(source);
+    link.target(target);
+    link.addTo(this.graph);
+  }
+
   public ngAfterViewInit(): void {
     const { paper } = this;
     paper.unfreeze();     
   }
+
+  private createExampleWorkflow() {
+    let model1 = this.addModule("create supplier")
+    let model2 = this.addModule("send email")
+    let model3 = this.addModule("buy stuff")
+
+    this.addLink(model1, model2)
+    this.addLink(model2, model3)
+  }
+
+  public printJson() {
+    let graphJson = JSON.stringify(this.graph.toJSON());
+    console.log(graphJson)
+  }
+
+
 
 
 }
